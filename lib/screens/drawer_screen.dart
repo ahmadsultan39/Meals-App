@@ -31,7 +31,7 @@ class DrawerScreen extends StatelessWidget {
             color: Theme.of(context).accentColor,
             alignment: Alignment.centerLeft,
             child: Text(
-              'Cooking up!',
+              'Cooking Up!',
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 color: Theme.of(context).primaryColor,
