@@ -51,8 +51,7 @@ class _MyAppState extends State<MyApp> {
       });
   }
 
-  bool _isFav(String mealId)
-  {
+  bool _isFav(String mealId) {
     return _fav.any((element) => element.id == mealId);
   }
 
@@ -62,11 +61,11 @@ class _MyAppState extends State<MyApp> {
       title: 'Meals App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        canvasColor: Color.fromRGBO(40, 40, 40, 1),
+        canvasColor: const Color.fromRGBO(40, 40, 40, 1),
         accentColor: Colors.amber,
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: TextStyle(
+              headline6: const TextStyle(
                   fontFamily: 'RobotoCondensed',
                   fontWeight: FontWeight.bold,
                   fontSize: 20),
@@ -77,7 +76,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (ctx) => TabBarScreen(_fav),
         CategoryMealsScreen.namedRoute: (ctx) => CategoryMealsScreen(meals),
-        MealDetailsScreen.namedRoute: (ctx) => MealDetailsScreen(_selevtFav,_isFav),
+        MealDetailsScreen.namedRoute: (ctx) =>
+            MealDetailsScreen(_selevtFav, _isFav),
         SettingsScreen.namedRoute: (ctx) =>
             SettingsScreen(_seveSettings, settings),
       },

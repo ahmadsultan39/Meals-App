@@ -28,15 +28,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     super.initState();
   }
+  //   @override
+  // void didChangeDependencies() {
+  //   _glutenfree = widget.loadSettings['gluten'];
+  //   _lactosefree = widget.loadSettings['lactose'];
+  //   _vegetarian = widget.loadSettings['vegetarian'];
+  //   _vegan = widget.loadSettings['vegan'];
+
+  //   super.didChangeDependencies();
+  // }
 
   Widget _buildSwitch(
       String title, String subtitle, bool value, Function change) {
     return SwitchListTile.adaptive(
       activeColor: Theme.of(context).primaryColor,
-      value: value,
+      value: value == null ? false : value,
       onChanged: change,
-      title: Text(title),
-      subtitle: Text(subtitle),
+      title: Text(title == null ? 'Loading ..' : title),
+      subtitle: Text(subtitle == null ? 'Loading ..' : subtitle),
     );
   }
 
@@ -44,24 +53,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
         actions: [
           IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.save_rounded,
               ),
               onPressed: () {
-              Map<String,bool> settings = {
-                    'gluten': _glutenfree,
-                    'lactos': _lactosefree,
-                    'vegan': _vegan,
-                    'vegetarian': _vegetarian,
-                  };
-              widget.saveSettings(settings);
-              }) 
+                Map<String, bool> settings = {
+                  'gluten': _glutenfree,
+                  'lactose': _lactosefree,
+                  'vegan': _vegan,
+                  'vegetarian': _vegetarian,
+                };
+                widget.saveSettings(settings);
+              })
         ],
       ),
-      drawer: DrawerScreen(),
+      drawer: const DrawerScreen(),
       body: Container(
         color: Theme.of(context).accentColor,
         child: Column(
@@ -82,7 +91,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 _glutenfree = value;
               });
             }),
-            Divider(
+            const Divider(
               thickness: 0.5,
               color: Colors.black,
             ),
@@ -92,7 +101,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 _lactosefree = value;
               });
             }),
-            Divider(
+            const Divider(
               thickness: 0.5,
               color: Colors.black,
             ),
@@ -102,7 +111,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 _vegetarian = value;
               });
             }),
-            Divider(
+            const Divider(
               thickness: 0.5,
               color: Colors.black,
             ),

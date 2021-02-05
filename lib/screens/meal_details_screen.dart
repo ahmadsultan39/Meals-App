@@ -11,15 +11,20 @@ class MealDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final meal = ModalRoute.of(context).settings.arguments as Meal;
+    final mediaquery = MediaQuery.of(context);
+    final appBar = AppBar(
+      title: Text(meal.title),
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text(meal.title),
-      ),
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              height: 300,
+              height: (mediaquery.size.height -
+                      appBar.preferredSize.height -
+                      mediaquery.padding.top) *
+                  0.6,
               width: double.infinity,
               child: Image.network(
                 meal.imageUrl,
@@ -28,7 +33,7 @@ class MealDetailsScreen extends StatelessWidget {
             ),
             Container(
                 alignment: Alignment.centerLeft,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                 child: Text(
                   'Ingredients :',
                   style: Theme.of(context)
@@ -37,7 +42,10 @@ class MealDetailsScreen extends StatelessWidget {
                       .copyWith(color: Colors.white, fontSize: 22),
                 )),
             Container(
-              height: 150,
+              height: (mediaquery.size.height -
+                      appBar.preferredSize.height -
+                      mediaquery.padding.top) *
+                  0.2,
               width: double.infinity,
               child: ListView.builder(
                 itemBuilder: (ctx, index) => Card(
@@ -56,7 +64,7 @@ class MealDetailsScreen extends StatelessWidget {
             ),
             Container(
                 alignment: Alignment.centerLeft,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                 child: Text(
                   'Steps :',
                   style: Theme.of(context)
@@ -69,7 +77,10 @@ class MealDetailsScreen extends StatelessWidget {
                   color: Colors.white,
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(15)),
-              height: 150,
+              height: (mediaquery.size.height -
+                      appBar.preferredSize.height -
+                      mediaquery.padding.top) *
+                  0.2,
               width: double.infinity,
               child: ListView.builder(
                   itemBuilder: (ctx, index) => Column(
@@ -80,7 +91,7 @@ class MealDetailsScreen extends StatelessWidget {
                             ),
                             title: Text(meal.steps[index]),
                           ),
-                          Divider()
+                          const Divider()
                         ],
                       ),
                   itemCount: meal.steps.length),
@@ -90,8 +101,8 @@ class MealDetailsScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: _isFav(meal.id)
-            ? Icon(Icons.star_rounded)
-            : Icon(Icons.star_outline_rounded),
+            ? const Icon(Icons.star_rounded)
+            : const Icon(Icons.star_outline_rounded),
         onPressed: () => _selevtFav(meal.id),
       ),
     );

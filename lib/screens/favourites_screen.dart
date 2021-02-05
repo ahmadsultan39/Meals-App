@@ -9,7 +9,7 @@ class FavouritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (fav.isEmpty)
-    return Center(
+    return const Center(
       child: Text('fav'),
     );
     else 

@@ -19,11 +19,11 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   Category category;
   List<Meal> meals;
 
-  void _hideItem(String id) {
-    setState(() {
-      meals.removeWhere((element) => element.id == id);
-    });
-  }
+  // void _hideItem(String id) {
+  //   setState(() {
+  //     meals.removeWhere((element) => element.id == id);
+  //   });
+  // }
 
   @override
   void didChangeDependencies() {

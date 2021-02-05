@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import './settings_screen.dart';
 
 class DrawerScreen extends StatelessWidget {
+const DrawerScreen();
+
   Widget _buildListTile(String title, IconData icon, Function tapHandler) =>
       ListTile(
         leading: Icon(
@@ -20,14 +22,15 @@ class DrawerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaquery = MediaQuery.of(context);
     return Container(
-      width: MediaQuery.of(context).size.width * 0.75,
+      width: mediaquery.size.width * 0.75,
       color: Theme.of(context).primaryColor,
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(20),
-            height: 150,
+            padding:const EdgeInsets.all(20),
+            height: (mediaquery.size.height - mediaquery.padding.top) * 0.25 ,
             color: Theme.of(context).accentColor,
             alignment: Alignment.centerLeft,
             child: Text(

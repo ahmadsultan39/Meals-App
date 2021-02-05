@@ -18,7 +18,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
   @override
   void initState() {
     tabs = [
-      {'tab': CategoriesScreen(), 'title': 'Categories'},
+      {'tab': const CategoriesScreen(), 'title': 'Categories'},
       {'tab': FavouritesScreen(widget.fav), 'title': 'Favourites'},
     ];
     super.initState();
@@ -51,16 +51,16 @@ class _TabBarScreenState extends State<TabBarScreen> {
       appBar: AppBar(
         title: Text(tabs[_selectedIndex]['title']),
       ),
-      drawer: Drawer(
-        child: DrawerScreen(),
+      drawer: const Drawer(
+        child: const DrawerScreen(),
       ),
       body: tabs[_selectedIndex]['tab'],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.category_rounded), label: 'Categories'),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.star_border_rounded), label: 'Favourites'),
         ],
         onTap: _selectCat,
